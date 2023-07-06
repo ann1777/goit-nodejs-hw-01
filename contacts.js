@@ -1,15 +1,16 @@
-const fs = require("fs").promises;
+const fs = require("fs/promises");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 
-const contactsPath = path.join("db", "contacts.json");
+// const contactsPath = path.join("db", "contacts.json");
+const contactsPath = path.resolve("./db/contacts.json");
 
 async function listContacts() {
   try {
     const data = await fs.readFile(contactsPath);
-    console.table(JSON.parse(data));
+    return console.table(JSON.parse(data));
   } catch (error) {
-    console.log(error);
+    return console.log(error);
   }
 }
 
@@ -20,9 +21,9 @@ async function getContactById(contactId) {
     const result = normalizedData.find(
       (contact) => contact.id.toString() === contactId.toString()
     );
-    console.log(result);
+    return console.log(result);
   } catch (error) {
-    console.log(error);
+    return console.log(error);
   }
 }
 

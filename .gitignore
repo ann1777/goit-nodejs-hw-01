@@ -17,3 +17,7 @@ logs
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Env variables
+.env
+.env.local

@@ -1,4 +1,7 @@
-// const argv = require('yargs').argv;
+console.log("Welcome to Node.js");
+// const argv = require("yargs").argv;
+const contacts = require("./db/contacts.json");
+console.log(contacts);
 
 const { Command } = require("commander");
 const {
