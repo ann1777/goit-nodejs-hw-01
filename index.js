@@ -1,17 +1,36 @@
-console.log("Welcome to Node.js");
-// const argv = require("yargs").argv;
-const contacts = require("./db/contacts.json");
-console.log(contacts);
-
-const { Command } = require("commander");
-const {
-  listContacts,
+import {
+  getAllContacts,
   getContactById,
   removeContact,
-  addContact,
-} = require("./contacts.js");
+  addNewContact,
+} from "./contacts.js";
+import yargs from "yargs";
+import { program } from "commander";
+// const argv = yargs.argv;
 
-const program = new Command();
+const invokeAction = ({ action, id, name, email, phone }) => {
+  try {
+    switch (action) {
+      case "getAll":
+        return getAllContacts();
+
+      case "getById":
+        getContactById(id);
+        break;
+
+      case "addNew":
+        addNewContact(name, email, phone);
+        break;
+
+      case "removeById":
+        removeContact(id);
+        break;
+    }
+  } catch (error) {
+    console.log("Unknown action type!");
+  }
+};
+
 program
   .option("-a, --action <type>", "choose action")
   .option("-i, --id <type>", "user id")
@@ -19,31 +38,22 @@ program
   .option("-e, --email <type>", "user email")
   .option("-p, --phone <type>", "user phone");
 
-program.parse(process.argv);
+program.parse();
 
-const argv = program.opts();
+const options = program.opts();
+invokeAction(options);
 
-async function invokeAction({ action, id, name, email, phone }) {
-  switch (action) {
-    case "list":
-      listContacts();
-      break;
+// const actionIndex = process.argv.indexOf("--action");
+// if (actionIndex != -1) {
+//   const action = process.argv[actionIndex + 1];
+//   invokeAction(action);
+// }
 
-    case "get":
-      getContactById(id);
-      break;
+// const { argv } = yargs(process.argv.slice(2));
+// // console.log(argv);
 
-    case "add":
-      addContact(name, email, phone);
-      break;
+// invokeAction(argv);
 
-    case "remove":
-      removeContact(id);
-      break;
-
-    default:
-      console.warn("\x1B[31m Unknown action type!");
-  }
-}
-
-invokeAction(argv);
+// node index -a "getAll"
+// node index.js --action getById --id AeHIrLTr6JkxGE6SN-0Rw
+//
