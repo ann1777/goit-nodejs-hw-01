@@ -108,19 +108,19 @@ invokeAction(argv);
 
 5. Запусти команди в терміналі і зроби окремі скриншоти результату виконання кожної команди
 
-# Отримуємо і виводимо весь список контактів у вигляді таблиці (console.table)
+### Отримуємо і виводимо весь список контактів у вигляді таблиці (console.table)
 
-![node index.js -a "getAll"](https://prnt.sc/2qiPABFo_oM9)
+![node index.js -a "getAll"] (https://prnt.sc/2qiPABFo_oM9)
 
-# Отримуємо контакт по id і виводимо у консоль об'єкт контакту або null, якщо контакту з таким id не існує.
+### Отримуємо контакт по id і виводимо у консоль об'єкт контакту або null, якщо контакту з таким id не існує.
 
-![node index.js --action "getById" --id "e6ywwRe4jcqxXfCZOj_1e"] (https://prnt.sc/Jzq1CkKUDSsD)
+![node index.js -a "getById" --id "e6ywwRe4jcqxXfCZOj_1e"] (https://prnt.sc/Jzq1CkKUDSsD)
 
-# Додаємо контакт та виводимо в консоль об'єкт новоствореного контакту
+### Додаємо контакт та виводимо в консоль об'єкт новоствореного контакту
 
 ![node index.js --action "addNew" --name "Tom Cruise" --email "tomcruise@gmail.com" --phone "777-777-77"] (https://prnt.sc/AM8G-8R7JzcJ)
 
-# Видаляємо контакт та виводимо в консоль об'єкт видаленого контакту або null, якщо контакту з таким id не існує.
+### Видаляємо контакт та виводимо в консоль об'єкт видаленого контакту або null, якщо контакту з таким id не існує.
 
 ![node index.js --action "removeById" --id "XlzJ8POLJ7_IuTa2XoajC"] (https://prnt.sc/p1q6Rb8H8lyV)
 
