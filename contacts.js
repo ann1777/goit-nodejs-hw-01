@@ -35,7 +35,7 @@ export const removeContact = (id) => {
       }
       console.log(null);
       const result = contacts.filter((contact) => contact.id !== id);
-      fs.writeFile(contactsPath, JSON.stringify(result));
+      fs.writeFile(contactsPath, JSON.stringify(result, null, 2));
     })
     .catch((err) => console.log(err.message));
 };
@@ -47,7 +47,9 @@ export const addNewContact = async (name, email, phone) => {
       const parsed = JSON.parse(data);
       return console.table(parsed.concat(contact));
     })
-    .then((result) => fs.writeFile(contactsPath, JSON.stringify(result)))
+    .then((result) =>
+      fs.writeFile(contactsPath, JSON.stringify(result, null, 2))
+    )
     .catch((err) => console.log(err.message));
 };
 
