@@ -25,8 +25,8 @@ const invokeAction = ({ action, id, name, email, phone }) => {
         removeContact(id);
         break;
     }
-  } catch (error) {
-    return console.log("Unknown action type!");
+  } catch (e) {
+    return console.log("Unknown action type!", e);
   }
 };
 

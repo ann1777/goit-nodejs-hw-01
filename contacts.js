@@ -28,11 +28,15 @@ export const getContactById = async (Id) => {
 export const removeContact = (id) => {
   fs.readFile(contactsPath)
     .then((data) => {
-      const parsed = JSON.parse(data);
-      console.log(parsed.find((contact) => contact.id === id));
-      return parsed.filter((contact) => contact.id !== id);
+      const contacts = JSON.parse(data);
+      if (contacts.find((contact) => contact.id === id)) {
+        const contact = contacts.find((contact) => contact.id === id);
+        console.table(contact);
+      }
+      console.log(null);
+      const result = contacts.filter((contact) => contact.id !== id);
+      fs.writeFile(contactsPath, JSON.stringify(result));
     })
-    .then((result) => fs.writeFile(contactsPath, JSON.stringify(result)))
     .catch((err) => console.log(err.message));
 };
 
@@ -41,7 +45,7 @@ export const addNewContact = async (name, email, phone) => {
   fs.readFile(contactsPath)
     .then((data) => {
       const parsed = JSON.parse(data);
-      return parsed.concat(contact);
+      return console.table(parsed.concat(contact));
     })
     .then((result) => fs.writeFile(contactsPath, JSON.stringify(result)))
     .catch((err) => console.log(err.message));
