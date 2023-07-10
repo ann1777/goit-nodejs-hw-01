@@ -1,4 +1,12 @@
 {
+  "name": "goit-nodejs-hw-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "scripts": {
     "start": "node index",
     "dev": "nodemon index"
@@ -6,19 +14,12 @@
   "dependencies": {
     "commander": "^7.2.0",
     "gulp": "^4.0.2",
-    "typescript": "^5.1.6",
+    "nanoid": "^4.0.2",
     "uuid": "^8.3.2",
-    "uuidv4": "^6.2.8",
     "yargs": "^17.7.2"
   },
-  "name": "goit-nodejs-hw-01",
-  "description": "",
-  "version": "1.0.0",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "typescript": "^5.1.6"
   }
 }
