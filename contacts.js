@@ -1,8 +1,5 @@
-// const fs = require("fs").promises;
-// const path = require("path");
 import fs from "fs/promises";
 import path from "path";
-//Extra module for ID generation
 import { nanoid } from "nanoid";
 
 const contactsPath = path.resolve("contacts", "contacts.json");
@@ -40,29 +37,14 @@ export const removeContact = (id) => {
 };
 
 export const addNewContact = async (name, email, phone) => {
-  const contacts = await getAllContacts();
-  const newContact = {
-    id: nanoid(),
-    name,
-    email,
-    phone,
-  };
+  const contact = [{ id: nanoid(), name, email, phone }];
   fs.readFile(contactsPath)
     .then((data) => {
-      const newContact = JSON.parse(data);
-      return contacts.concat(newContact);
+      const parsed = JSON.parse(data);
+      return parsed.concat(contact);
     })
-    .then((contacts) => fs.writeFile(contactsPath, JSON.stringify(contacts)))
+    .then((result) => fs.writeFile(contactsPath, JSON.stringify(result)))
     .catch((err) => console.log(err.message));
-  console.log("Contacts added successfully! New lists of contacts: ");
-  console.table(contacts);
-
-  fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2), (error) => {
-    if (error) {
-      return console.log(error);
-    }
-    return newContact;
-  });
 };
 
 export default {

@@ -4,9 +4,8 @@ import {
   removeContact,
   addNewContact,
 } from "./contacts.js";
-import yargs from "yargs";
+
 import { program } from "commander";
-// const argv = yargs.argv;
 
 const invokeAction = ({ action, id, name, email, phone }) => {
   try {
@@ -27,7 +26,7 @@ const invokeAction = ({ action, id, name, email, phone }) => {
         break;
     }
   } catch (error) {
-    console.log("Unknown action type!");
+    return console.log("Unknown action type!");
   }
 };
 
@@ -42,18 +41,3 @@ program.parse();
 
 const options = program.opts();
 invokeAction(options);
-
-// const actionIndex = process.argv.indexOf("--action");
-// if (actionIndex != -1) {
-//   const action = process.argv[actionIndex + 1];
-//   invokeAction(action);
-// }
-
-// const { argv } = yargs(process.argv.slice(2));
-// // console.log(argv);
-
-// invokeAction(argv);
-
-// node index -a "getAll"
-// node index.js --action getById --id AeHIrLTr6JkxGE6SN-0Rw
-//
